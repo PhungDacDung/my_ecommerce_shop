@@ -16,8 +16,8 @@
                 img_pin = 'images/icons/location.png';
             }
             if (data_map_x == null || data_map_y == null) {
-                data_map_x = 40.007749;
-                data_map_y = -93.266572;
+                data_map_x = 21.584384;
+                data_map_y = 105.807223;
             }
             if (scrollwhell == null) {
                 scrollwhell = 0;

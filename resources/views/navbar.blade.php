@@ -50,7 +50,7 @@
 							</li>
 
 							<li>
-								<a href="product.html">Shop</a>
+								<a href="/product">Shop</a>
 							</li>
 
 							<li class="label1" data-label1="hot">
@@ -66,7 +66,7 @@
 							</li>
 
 							<li>
-								<a href="contact.html">Contact</a>
+								<a href="/contact">Contact</a>
 							</li>
 						</ul>
 					</div>	
@@ -172,7 +172,7 @@
 				</li>
 
 				<li>
-					<a href="blog.html">Blog</a>
+					<a href="/blog">Blog</a>
 				</li>
 
 				<li>

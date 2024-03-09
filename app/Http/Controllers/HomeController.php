@@ -25,7 +25,6 @@ class HomeController extends Controller
             'title' => 'Trang chủ',
             'sliders' => $this->slider->getSlider(),
             'products' => $this->productService->get(),
-
         ]);
        
     }

@@ -1,18 +1,21 @@
 <?php
 
+use App\Models\Product;
+use App\Http\Services\UploadService;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\Users\LoginController;
-use App\Http\Controllers\Admin\MainController;
-use App\Http\Controllers\Admin\MenuController;
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\SliderController;
-use App\Http\Controllers\Admin\UploadController;
+use PHPUnit\Framework\Attributes\Group;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
-use App\Http\Services\UploadService;
-use App\Models\Product;
-use Illuminate\Support\Facades\Auth;
-use PHPUnit\Framework\Attributes\Group;
+use App\Http\Controllers\EmailController;
+use App\Http\Controllers\Admin\MainController;
+use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\UploadController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\Users\LoginController;
+use App\Http\Controllers\Admin\BlogController as AdminBlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +75,13 @@ Route::middleware(['auth'])->group(function(){
             Route::DELETE('delete',[SliderController::class,'destroy']);
         });
 
+        /* Blog admin  */
+
+        Route::prefix('/blog')->group(function(){
+            Route::get('add',[AdminBlogController::class,'create']);
+            Route::post('add',[AdminBlogController::class,'store']);
+        });
+
         //Upload
         /* Route::post('upload',[UploadController::class,'store']); */
 
@@ -90,6 +100,15 @@ Route::get('/about', function () {
     return view('pages/about');
 })->name("about-us");
 
+Route::get('/contact', function () {
+    return view('pages/contact');
+})->name("contact");
+
+// Route::get('/product', function () {
+//     return view('pages/product');
+// })->name("product");
+Route::get('product',[ProductController::class,'productPage']);
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -105,4 +124,13 @@ Route::post('/add-cart',[CartController::class,'create']);
 
 /* Show cart */
 Route::get('/cart',[CartController::class,'show']);
+
+/* Blog */
+Route::get('/blog',[BlogController::class,'show']);
+Route::get('/blog-detail/{id}',[AdminBlogController::class,'showDetail'])->name('blog-detail');
+
+// Route::get('/contact', [EmailController::class, 'sendEmail']);
+Route::post('/send-email', [EmailController::class, 'sendEmail']);
 });
+
+

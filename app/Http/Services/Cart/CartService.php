@@ -50,9 +50,9 @@ class CartService{
 
         $carts[$product_id] = $qty;
         Session::put('carts', $carts);
+        dd($carts);
 
         return true;
-
     }
 
     public function getProduct(){
@@ -63,5 +63,12 @@ class CartService{
         return Product::select('id','name','price','price_sale','thumb')
         ->whereIn('id',$productId)
         ->get();
+    }
+
+    public function update($request)
+    {
+        Session::put('carts', $request->input('num_product'));
+
+        return true;
     }
 }

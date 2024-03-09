@@ -13,7 +13,7 @@
           <img src="/templates/admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">Phùng Đắc Dũng</a>
         </div>
       </div>
 
@@ -137,6 +137,33 @@
                 <a href="/admin/product/list" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách sản phẩm</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
+
+          {{-- Blog --}}
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Blog
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admin/blog/add" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Thêm blog</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/menu/list" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách blog</p>
                 </a>
               </li>
               

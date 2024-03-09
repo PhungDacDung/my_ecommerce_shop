@@ -2,45 +2,32 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Http\Services\BlogService;
 use Illuminate\Http\Request;
-use App\Http\Services\Cart\CartService;
-use Illuminate\Support\Facades\Session;
 
-class CartController extends Controller
+class BlogController extends Controller
 {
 
+    protected $blogService;
 
-    protected $cartService;
-
-    public function __construct(CartService $cartService) {
-        $this->cartService = $cartService;
+    public function __construct(BlogService $blogService)
+    {
+        $this->blogService =  $blogService;
     }
-
     /**
      * Display a listing of the resource.
      */
-
     public function index()
     {
+        //
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function create()
     {
         //
-        $result = $this->cartService->addCart($request);
-        // dd(Session::get('carts'));
-        if($request === false){
-
-            return redirect()->back()->with('error','Thêm giỏ hàng thất bại');
-        }
-        else{
-            return redirect('/cart');
-        }
-
     }
 
     /**
@@ -56,9 +43,10 @@ class CartController extends Controller
      */
     public function show()
     {
-        //
-        $products = $this->cartService->getProduct();
-        return view('pages/cart',compact('products'));
+        return view('pages/blog',[
+            'title' => 'Bài viết mới nhất',
+            'blogs' => $this->blogService->get(),
+        ]);
     }
 
     /**
@@ -72,11 +60,9 @@ class CartController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, string $id)
     {
         //
-        $this->cartService->update($request);
-        return redirect("/cart");
     }
 
     /**

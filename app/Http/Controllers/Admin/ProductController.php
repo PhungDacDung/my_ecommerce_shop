@@ -59,7 +59,6 @@ class ProductController extends Controller
        $this->productService->insert($request,$url);
        
        return redirect()->back();
-       
     }
 
     /**
@@ -117,5 +116,12 @@ class ProductController extends Controller
     public function showDetail($id){
         $data = $this->productService->getById($id);
         return view("pages/product-detail",compact('data'));
+    }
+
+    public function productPage(){
+        return view('pages/product',[
+            'title' => 'Sanr phẩm',
+            'products' => $this->productService->get(),
+        ]);
     }
 }
