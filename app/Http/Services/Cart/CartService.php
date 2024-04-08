@@ -50,7 +50,6 @@ class CartService{
 
         $carts[$product_id] = $qty;
         Session::put('carts', $carts);
-        dd($carts);
 
         return true;
     }
